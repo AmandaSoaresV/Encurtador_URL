@@ -1,0 +1,48 @@
+# dependencies
+node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+/.jest-cache
+/.jest
+
+# next.js / react
+/.next/
+/out/
+
+# production / build
+/build
+/dist
+
+# misc
+.DS_Store
+*.pem
+*.key
+*.crt
+
+# debug / logs
+npm-debug.log*
+*.log
+
+# local env files
+.env*.local
+.env
+.env.test
+.env.development
+.env.production
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# IDE / editors
+.vscode/
+
+# docker
+.docker/
+docker-compose.override.yml

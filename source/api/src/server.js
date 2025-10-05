@@ -1,11 +1,11 @@
 import fastify from "fastify";
-import { linkRoutes } from "./modules/link/link.route.js";
+import { linksRoutes } from "./modules/links/link.route.js";
 
 const port = 3000;
 
 const server = fastify({ logger: true });
 
-server.register(linkRoutes, { prefix: "/api" });
+server.register(linksRoutes, { prefix: "/api" });
 
 server.listen({ port }, (error) => {
   if (error) {

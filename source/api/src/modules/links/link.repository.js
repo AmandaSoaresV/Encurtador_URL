@@ -2,13 +2,13 @@ export class LinkRepository {
   links = [];
   constructor() {}
 
-  async findAll() {}
+  async findAll() {
+    return this.links;
+  }
 
   async create(linksData) {
-    console.log(linksData);
     this.links.push(linksData);
     return linksData;
-
   }
 
   async update(id, clinksData) {}

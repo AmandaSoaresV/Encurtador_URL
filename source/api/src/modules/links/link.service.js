@@ -41,4 +41,16 @@ export class LinkService {
       ...linkData,
     });
   }
+
+  async deleteLink(id) {
+    if (!id) {
+      throw new Error(" o ID é obrigatório para excluir");
+    }
+    const deleted = await this.linksRepository.remove(id);
+    if (!deleted) {
+      throw new Error("Link não encontrado");
+    }
+
+    return deleted;
+  }
 }

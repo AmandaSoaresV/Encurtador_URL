@@ -17,4 +17,19 @@ export class LinkController {
     }
     return reply.code(201).send(novoLink);
   }
+
+  async deleteLink(request, reply) {
+    const { id } = request.params;
+    try {
+      const deleted = await this.linkService.deleteLink(id);
+      return reply.code(200).send({
+        message: "link excluído",
+        deleted,
+      });
+    } catch (error) {
+      return reply.code(404).send({ message: error.message });
+    }
+
+
+  }
 }

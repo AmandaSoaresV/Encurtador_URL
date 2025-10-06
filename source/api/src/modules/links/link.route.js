@@ -14,4 +14,12 @@ export async function linksRoutes(fastify, options) {
   fastify.post("/links", (request, reply) =>
     linkController.createLink(request, reply)
   );
+
+  fastify.put("/links/:id", (request, reply) =>
+    linkController.updateLink(request, reply)
+  );
+
+  fastify.delete("/links/:id", (request, reply) =>
+    linkController.deleteLink(request, reply)
+  );
 }

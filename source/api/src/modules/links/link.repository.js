@@ -2,52 +2,57 @@ import db from "../../infra/database.js";
 import { randomUUID } from "node:crypto";
 import { links } from "../../infra/db/schema.js";
 import { eq } from "drizzle-orm";
-import { link } from "node:fs";
 
 export class LinkRepository {
-  links = [];
   constructor() {
     this.db = db;
   }
 
   async findAll() {
-    return this.db.select().from(links);
+    try {
+      const result = this.db.select().from(links);
+      return result;
+    } catch (error) {
+      throw new Error("Erro ao buscar links: " + error.message);
+    }
   }
 
   async findById(id) {
-    const result = await this.db.select().from(links).where(eq(links.id, id));
-    return result[0];
+    try {
+      const result = await this.db.select().from(links).where(eq(links.id, id));
+      return result[0];
+    } catch (error) {
+      throw new Error("Erro ao buscar link pelo ID: " + error.message);
+    }
   }
 
   async create(linksData) {
-    let result;
     try {
       const id = randomUUID();
-      result = await this.db
+      const result = await this.db
         .insert(links)
         .values({
           id,
           ...linksData,
         })
         .returning();
+      return result[0];
     } catch (error) {
-      console.error("Erro ao cliar link:", error);
+      throw new Error("Erro ao criar link: " + error.message);
     }
-    return result[0];
   }
 
   async update(id, clinksData) {
-    let result;
     try {
-      result = await this.db
+      const result = await this.db
         .update(links)
         .set(clinksData)
         .where(eq(links.id, id))
         .returning();
+      return result[0];
     } catch (error) {
-      console.error("Erro ao atualizar cliques", error);
+      throw new Error("Erro ao atualizar link: " + error.message);
     }
-    return result[0];
   }
 
   async remove(id) {
@@ -58,15 +63,19 @@ export class LinkRepository {
         .returning({ id: links.id });
       return result.length > 0;
     } catch (error) {
-      console.error("Erro ao deletar link", error);
+      throw new Error("Erro ao excluir link: " + error.message);
     }
   }
 
   async findByCode(code) {
-    const result = await this.db
-      .select()
-      .from(links)
-      .where(eq(links.codigo, code));
-    return result[0];
+    try {
+      const result = await this.db
+        .select()
+        .from(links)
+        .where(eq(links.codigo, code));
+      return result[0];
+    } catch (error) {
+      throw new Error("Erro ao buscar link pelo código: " + error.message);
+    }
   }
 }

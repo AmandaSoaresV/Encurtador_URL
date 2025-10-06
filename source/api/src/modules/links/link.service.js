@@ -73,6 +73,7 @@ export class LinkService {
     }
 
     const link = await this.linksRepository.findByCode(code);
+    console.log(111, link);
     if (!link) {
       throw new Error("Link não encontrado");
     }

@@ -1,6 +1,5 @@
-import db from '../../infra/database.js';
-import { randomUUID } from 'node:crypto';
-import { links } from '../../infra/db/schema.js';
+import db from "../../infra/database.js";
+import { links } from "../../infra/db/schema.js";
 
 export class LinkRepository {
   links = [];
@@ -15,21 +14,17 @@ export class LinkRepository {
   async create(linksData) {
     let result;
     try {
-      const id = randomUUID();
       result = await this.db
         .insert(links)
-        .values({
-          id,
-          ...linksData,
-        })
+        .values({ ...linksData })
         .returning();
     } catch (error) {
-      console.error('Erro ao cliar link:', error);
+      console.error("Erro ao cliar link:", error);
     }
     return result[0];
   }
 
-  async update(id, clinksData) { }
+  async update(id, clinksData) {}
 
-  async remove(id) { }
+  async remove(id) {}
 }

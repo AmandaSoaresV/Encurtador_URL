@@ -11,10 +11,21 @@ export class LinkService {
   }
 
   createLink(linkData) {
+    function validateLinkData(linkData) {
+      try {
+        new URL(linkData.urlOriginal);
+      } catch {
+        throw new Error("URL inválida.");
+      }
+      if (!linkData.legenda) {
+        throw new Error("Legenda é obrigatória!");
+      }
+    }
+
     try {
-      new URL(linkData.urlOriginal);
+      validateLinkData(linkData);
     } catch (error) {
-      throw new Error("URL inválida");
+      throw new Error(error.message);
     }
 
     const genCode = customAlphabet(
@@ -25,6 +36,8 @@ export class LinkService {
     return this.linksRepository.create({
       id: randomUUID(),
       codigo: genCode(),
+      dataCriacao: new Date(),
+      cliques: 0,
       ...linkData,
     });
   }

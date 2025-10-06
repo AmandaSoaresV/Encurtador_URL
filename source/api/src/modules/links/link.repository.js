@@ -23,7 +23,6 @@ export class LinkRepository {
           ...linksData,
         })
         .returning();
-      console.log
     } catch (error) {
       console.error('Erro ao cliar link:', error);
     }

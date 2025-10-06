@@ -8,6 +8,11 @@ export class LinkService {
   }
 
   createLink(linkData) {
+    try {
+      new URL(linkData.urlOriginal);
+    } catch (error) {
+      throw new Error('URL inválida');
+    }
     return this.linksRepository.create(linkData);
   }
 }

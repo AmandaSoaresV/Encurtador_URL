@@ -9,7 +9,7 @@ export class LinkRepository {
   }
 
   async findAll() {
-    return this.links;
+    return this.db.select().from(links);
   }
 
   async create(linksData) {

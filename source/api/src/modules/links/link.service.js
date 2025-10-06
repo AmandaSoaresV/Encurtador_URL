@@ -6,14 +6,11 @@ export class LinkService {
     this.linksRepository = linksRepository;
   }
 
-  #validateLinkData(linkData) {
+  #validateUrl(url) {
     try {
-      new URL(linkData.urlOriginal);
+      new URL(url);
     } catch {
       throw new Error("URL inválida.");
-    }
-    if (!linkData.legenda) {
-      throw new Error("Legenda é obrigatória!");
     }
   }
 
@@ -23,7 +20,10 @@ export class LinkService {
 
   createLink(linkData) {
     try {
-      this.#validateLinkData(linkData);
+      this.#validateUrl(linkData.urlOriginal);
+      if (!linkData.legenda) {
+        throw new Error("Legenda é obrigatória!");
+      }
     } catch (error) {
       throw new Error(error.message);
     }
@@ -56,15 +56,19 @@ export class LinkService {
 
   async updateLink(id, linkData) {
     try {
-      this.#validateLinkData(linkData);
+      if (linkData.urlOriginal) {
+        this.#validateUrl(linkData.urlOriginal);
+      }
+      if (!linkData.urlOriginal && !linkData.legenda) {
+        throw new Error(
+          "Pelo menos um campo (urlOriginal ou legenda) deve ser fornecido para atualização."
+        );
+      }
     } catch (error) {
       throw new Error(error.message);
     }
 
-    return this.linksRepository.create({
-      ...this.linksRepository.findById(id),
-      ...linkData,
-    });
+    return this.linksRepository.update(id, linkData);
   }
 
   async getOriginalUrlAndIncrementClicks(code) {
@@ -73,7 +77,6 @@ export class LinkService {
     }
 
     const link = await this.linksRepository.findByCode(code);
-    console.log(111, link);
     if (!link) {
       throw new Error("Link não encontrado");
     }

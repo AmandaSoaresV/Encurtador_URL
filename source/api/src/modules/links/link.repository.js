@@ -42,11 +42,11 @@ export class LinkRepository {
     }
   }
 
-  async update(id, clinksData) {
+  async update(id, linksData) {
     try {
       const result = await this.db
         .update(links)
-        .set(clinksData)
+        .set(linksData)
         .where(eq(links.id, id))
         .returning();
       return result[0];

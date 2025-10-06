@@ -1,9 +1,21 @@
 import { randomUUID } from "node:crypto";
 import { customAlphabet } from "nanoid";
 
+
 export class LinkService {
   constructor(linksRepository) {
     this.linksRepository = linksRepository;
+  }
+
+  #validateLinkData(linkData) {
+    try {
+      new URL(linkData.urlOriginal);
+    } catch {
+      throw new Error("URL inválida.");
+    }
+    if (!linkData.legenda) {
+      throw new Error("Legenda é obrigatória!");
+    }
   }
 
   getAllLinks() {
@@ -11,19 +23,8 @@ export class LinkService {
   }
 
   createLink(linkData) {
-    function validateLinkData(linkData) {
-      try {
-        new URL(linkData.urlOriginal);
-      } catch {
-        throw new Error("URL inválida.");
-      }
-      if (!linkData.legenda) {
-        throw new Error("Legenda é obrigatória!");
-      }
-    }
-
     try {
-      validateLinkData(linkData);
+      this.#validateLinkData(linkData);
     } catch (error) {
       throw new Error(error.message);
     }
@@ -52,5 +53,18 @@ export class LinkService {
     }
 
     return deleted;
+  }
+
+  async updateLink(id, linkData) {
+    try {
+      this.#validateLinkData(linkData);
+    } catch (error) {
+      throw new Error(error.message);
+    }
+
+    return this.linksRepository.create({
+      ...this.linksRepository.findById(id),
+      ...linkData,
+    });
   }
 }

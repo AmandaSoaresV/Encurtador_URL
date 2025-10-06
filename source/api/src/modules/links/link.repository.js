@@ -14,6 +14,11 @@ export class LinkRepository {
     return this.db.select().from(links);
   }
 
+  async findById(id) {
+    const result = await this.db.select().from(links).where(eq(links.id, id));
+    return result[0];
+  }
+
   async create(linksData) {
     let result;
     try {

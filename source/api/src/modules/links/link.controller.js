@@ -31,16 +31,29 @@ export class LinkController {
     }
   }
 
-  async updateLink(request, reply) { 
+  async updateLink(request, reply) {
     const { id } = request.params;
     let novoLink;
     try {
-      novoLink = await this.linkService.updateLink(id,request.body);
+      novoLink = await this.linkService.updateLink(id, request.body);
     } catch (error) {
       return reply.code(400).send({ message: error.message });
     }
     return reply.code(201).send(novoLink);
   }
 
+  async redirectToOriginalUrl(request, reply) {
+    const { code } = request.params;
 
+    let originalUrl;
+    try {
+      originalUrl = await this.linkService.getOriginalUrlAndIncrementClicks(
+        code
+      );
+    } catch (error) {
+      return reply.code(404).send({ message: error.message });
+    }
+
+    return reply.code(302).redirect(originalUrl);
+  }
 }

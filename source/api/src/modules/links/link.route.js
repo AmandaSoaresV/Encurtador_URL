@@ -22,4 +22,8 @@ export async function linksRoutes(fastify, options) {
   fastify.delete("/links/:id", (request, reply) =>
     linkController.deleteLink(request, reply)
   );
+
+  fastify.get("/:code", (request, reply) =>
+    linkController.redirectToOriginalUrl(request, reply)
+  );
 }

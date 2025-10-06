@@ -1,7 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { customAlphabet } from "nanoid";
 
-
 export class LinkService {
   constructor(linksRepository) {
     this.linksRepository = linksRepository;
@@ -66,5 +65,20 @@ export class LinkService {
       ...this.linksRepository.findById(id),
       ...linkData,
     });
+  }
+
+  async getOriginalUrlAndIncrementClicks(code) {
+    if (!code) {
+      throw new Error("O código é obrigatório");
+    }
+
+    const link = await this.linksRepository.findByCode(code);
+    if (!link) {
+      throw new Error("Link não encontrado");
+    }
+
+    await this.linksRepository.update(link.id, { cliques: link.cliques + 1 });
+
+    return link.urlOriginal;
   }
 }

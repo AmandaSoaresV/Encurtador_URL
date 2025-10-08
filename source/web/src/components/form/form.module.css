@@ -1,0 +1,33 @@
+.titulo3 {
+  color: #1e0039;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border: 2px solid #4b0082;
+  background-color: #feedff;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.button {
+  background-color: #6b21a8;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-top: 1rem;
+  margin-left: auto;
+}
+
+.button:hover {
+  background-color: #5e0e7a;
+  cursor: pointer;
+}

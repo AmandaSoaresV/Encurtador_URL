@@ -1,0 +1,22 @@
+.rodape {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #e1b3ff;
+  color: #000000;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.rodape p {
+  margin: 0;
+}
+
+.heart {
+  color: purple;
+  vertical-align: middle;
+  margin-left: 0.3rem;
+}

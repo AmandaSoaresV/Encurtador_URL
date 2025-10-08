@@ -1,3 +1,35 @@
-.page {
-  background-color: #ffffff;
+.container {
+  background-color: #f5d7ff;
+  display: grid;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
+.content {
+  width: 42rem;
+}
+
+.titulo1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: #4b0082;
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.titulo2 {
+  font-weight: normal;
+  color: #1e0039;
+  font-size: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.link {
+  color: #7f1fb2;
 }

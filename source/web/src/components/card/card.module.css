@@ -1,103 +1,100 @@
 .card {
-    background-color: #4f0073;
-    color: white;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    margin-top: 2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  background-color: #4f0073;
+  color: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .topo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.5rem;
-    color: #feedff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  color: #feedff;
 }
 
 .topo h2 {
-    font-size: 1.1rem;
-    font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .urlCurta {
-    color: #feedff;
-    text-decoration: none;
-    display: block;
+  color: #feedff;
+  text-decoration: none;
+  display: block;
 }
 
 .urlCurta:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .urlOriginal {
-    color: #feedff;
-    font-size: 0.9rem;
-    margin-top: 0.25rem;
-    word-break: break-all;
+  color: #feedff;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+  word-break: break-all;
 }
 
 .rodape {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 .data {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #ddd6fe;
-    font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ddd6fe;
+  font-size: 0.85rem;
 }
 
 .botoes {
-    display: flex;
-    gap: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .copiar {
-    background-color: #6d28d9;
-    border: none;
-    color: white;
-    border-radius: 0.5rem;
-    padding: 0.4rem 0.8rem;
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: 0.2s;
+  background-color: #6d28d9;
+  border: none;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .copiar:hover {
-    background-color: #7e22ce;
+  background-color: #7e22ce;
 }
 
-
 .pencil:hover {
-    background-color: #7e22ce;
+  background-color: #7e22ce;
 }
 
 .trash:hover {
-    background-color: #7e22ce;
+  background-color: #7e22ce;
 }
 
-
 .botoes button {
-    background: none;
-    border: none;
-    color: #ddd6fe;
-    cursor: pointer;
-    transition: 0.2s;
+  background: none;
+  border: none;
+  color: #ddd6fe;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .botoes button:hover {
-    color: white;
+  color: white;
 }
 
 .a {
-    text-decoration: none;
-    color: rgb(239, 13, 13);
+  text-decoration: none;
+  color: rgb(239, 13, 13);
 }

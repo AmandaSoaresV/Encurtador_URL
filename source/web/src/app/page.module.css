@@ -3,7 +3,7 @@
   display: grid;
   justify-content: center;
   min-height: 100vh;
-  padding: 2rem 0;
+  padding: 2rem 0 5rem 0;
 }
 
 .content {
@@ -32,4 +32,13 @@
 
 .link {
   color: #7f1fb2;
+}
+
+.linkContainer {
+  height: 24rem;
+  overflow-y: auto;
+  gap: 1rem;
+  display: grid;
+  margin: 1.5rem 0;
+  padding-right: 0.5rem;
 }

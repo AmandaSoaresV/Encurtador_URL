@@ -2,9 +2,22 @@ import styles from "./page.module.css";
 import Card from "@/components/card";
 import Form from "@/components/form";
 import Rodape from "@/components/rodape";
+import axios from "axios";
 import { Link2 } from "lucide-react";
 
-export default function Home() {
+export default async function Home() {
+  async function getLinks() {
+    try {
+      const response = await axios.get("http://localhost:3333/links");
+      return response.data;
+    } catch (error) {
+      console.error("Erro ao buscar links:", error);
+    }
+  }
+
+  const { links } = await getLinks();
+  links.forEach((link) => console.log(link));
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -18,7 +31,9 @@ export default function Home() {
 
         <Form className={styles.form}></Form>
 
-        <Card />
+        {links.map((link) => (
+          <Card key={link.id} data={link} />
+        ))}
       </div>
       <Rodape></Rodape>
     </div>

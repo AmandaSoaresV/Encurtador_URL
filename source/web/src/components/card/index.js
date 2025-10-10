@@ -1,3 +1,5 @@
+"use client";
+import axios from "axios";
 import styles from "./card.module.css";
 import {
   Clipboard,
@@ -7,7 +9,16 @@ import {
   ChartColumnBig,
 } from "lucide-react";
 
-export default function Card({ data }) {
+export default function Card({ data, onDelete }) {
+  async function handleDelete() {
+    try {
+      await axios.delete(`http://localhost:3333/links/${data.id}`);
+      window.location.reload();
+    } catch (error) {
+      console.error("Erro ao deletar link:", error);
+    }
+  }
+
   return (
     <div className={styles.card}>
       <div className={styles.topo}>
@@ -18,9 +29,9 @@ export default function Card({ data }) {
       </div>
 
       <a
-        href={"http://localhost:3333/" + data.codigo}
+        href={`http://localhost:3333/${data.codigo}`}
         target="_blank"
-        rel="aaaaaaaaaaa"
+        rel="noopener noreferrer"
         className={styles.urlCurta}
       >
         http://localhost:3333/{data.codigo}
@@ -39,7 +50,7 @@ export default function Card({ data }) {
           <button>
             <Pencil size={18} className={styles.pencil} />
           </button>
-          <button>
+          <button onClick={handleDelete}>
             <Trash size={18} className={styles.trash} />
           </button>
         </div>

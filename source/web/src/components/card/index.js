@@ -17,9 +17,23 @@ export default function Card({ data, onDelete }) {
     urlOriginal: data.urlOriginal,
   });
 
+  function UrlValida(url) {
+    try {
+      new URL(url);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
   async function handleDelete() {
+    const confirmar = window.confirm(
+      `Tem certeza que deseja excluir o link "${data.legenda}"?`
+    );
+    if (!confirmar) return;
     try {
       await axios.delete(`http://localhost:3333/links/${data.id}`);
+      alert("Link excluído com sucesso");
       window.location.reload();
     } catch (error) {
       console.error("Erro ao deletar link:", error);
@@ -28,10 +42,30 @@ export default function Card({ data, onDelete }) {
 
   async function handleEdit(event) {
     event.preventDefault();
+
+    if (!editData.legenda || !editData.urlOriginal) {
+      alert("Preencha todos os campos");
+      return;
+    }
+
+    if (!UrlValida(editData.urlOriginal)) {
+      alert("URL inválida. Tente novamente");
+      return;
+    }
+
+    const confirmar = window.confirm(
+      `Deseja salvar as alterações no link "${data.legenda}"?`
+    );
+    if (!confirmar) return;
+
     try {
       await axios.put(`http://localhost:3333/links/${data.id}`, editData);
+      alert("Link editado com sucesso");
       window.location.reload();
     } catch (error) {
+      const message =
+        error.response?.data?.message || "Ocorreu um erro ao editar o link.";
+      alert(message);
       console.error("Erro ao editar link:", error);
     }
   }
@@ -67,6 +101,7 @@ export default function Card({ data, onDelete }) {
               id="legenda"
               type="text"
               placeholder="Legenda"
+              autocomplete="off"
               value={editData.legenda || ""}
               className={styles.input}
               onChange={({ target }) =>
@@ -78,6 +113,7 @@ export default function Card({ data, onDelete }) {
               id="url"
               type="text"
               placeholder="Link"
+              autocomplete="off"
               value={editData.urlOriginal || ""}
               className={styles.input}
               onChange={({ target }) =>

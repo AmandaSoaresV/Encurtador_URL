@@ -7,12 +7,36 @@ import axios from "axios";
 export default function Form() {
   const [data, setData] = useState({ legenda: "", urlOriginal: "" });
 
+  function UrlValida(url) {
+    try {
+      new URL(url);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
   async function handleCreate(event) {
     event.preventDefault();
+
+    if (!data.legenda || !data.urlOriginal) {
+      alert("Preencha todos os campos");
+      return;
+    }
+
+    if (!UrlValida(data.urlOriginal)) {
+      alert(" URL é inválida. Tente novamente");
+      return;
+    }
+
     try {
       await axios.post(`http://localhost:3333/links`, data);
+      alert("Link encurtado com sucesso");
       window.location.reload();
     } catch (error) {
+      const message =
+        error.response?.data?.message || "Ocorreu um erro ao criar o link.";
+      alert(message);
       console.error("Erro ao deletar link:", error);
     }
   }

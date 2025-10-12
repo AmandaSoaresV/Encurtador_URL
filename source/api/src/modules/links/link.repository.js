@@ -28,6 +28,12 @@ export class LinkRepository {
 
   async create(linksData) {
     try {
+      try {
+        new URL(linksData.urlOriginal);
+      } catch {
+        throw new Error("URL inválida, tente novamente");
+      }
+
       const id = randomUUID();
       const result = await this.db
         .insert(links)

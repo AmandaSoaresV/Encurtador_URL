@@ -1,9 +1,17 @@
 .card {
+  display: flex;
+  gap: 1.5rem;
   background-color: #4f0073;
   color: white;
   padding: 1.5rem;
   border-radius: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .topo {
@@ -40,12 +48,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: auto;
 }
 
 .data {
   display: flex;
-  align-items: center;
   gap: 0.5rem;
   color: #ddd6fe;
   font-size: 0.85rem;

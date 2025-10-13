@@ -9,6 +9,7 @@ import {
   Trash,
   ChartColumnBig,
 } from "lucide-react";
+import QRCode from "react-qr-code";
 
 export default function Card({ data, onDelete }) {
   const [editActive, setEditActive] = React.useState(false);
@@ -87,76 +88,79 @@ export default function Card({ data, onDelete }) {
 
   return (
     <div className={styles.card}>
-      {!editActive && (
-        <>
-          <div className={styles.topo}>
-            <h2>{data.legenda}</h2>
-            <span>
-              <ChartColumnBig size={20} /> {data.cliques}
-            </span>
+      <QRCode value={`http://localhost:3333/${data.codigo}`} size={160} />
+      <div className={styles.content}>
+        {!editActive && (
+          <>
+            <div className={styles.topo}>
+              <h2>{data.legenda}</h2>
+              <span>
+                <ChartColumnBig size={20} /> {data.cliques}
+              </span>
+            </div>
+            <a
+              href={`http://localhost:3333/${data.codigo}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.urlCurta}
+            >
+              http://localhost:3333/{data.codigo}
+            </a>
+            <p className={styles.urlOriginal}>{data.urlOriginal}</p>
+          </>
+        )}
+        {editActive && (
+          <>
+            <form
+              className={styles.form}
+              onSubmit={(event) => handleEdit(event)}
+            >
+              <input
+                id="legenda"
+                type="text"
+                placeholder="Legenda"
+                autoComplete="off"
+                value={editData.legenda || ""}
+                className={styles.input}
+                onChange={({ target }) =>
+                  seteditData({ ...editData, legenda: target.value })
+                }
+              />
+              <input
+                id="url"
+                type="text"
+                placeholder="Link"
+                autoComplete="off"
+                value={editData.urlOriginal || ""}
+                className={styles.input}
+                onChange={({ target }) =>
+                  seteditData({ ...editData, urlOriginal: target.value })
+                }
+              />
+              <button type="submit" className={styles.button}>
+                Editar
+              </button>
+            </form>
+          </>
+        )}
+        <div className={styles.rodape}>
+          <div className={styles.data}>
+            <Calendar size={16} />
+            <p>
+              criado em {dataFormatada} às {horaFormatada}
+            </p>
           </div>
-
-          <a
-            href={`http://localhost:3333/${data.codigo}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.urlCurta}
-          >
-            http://localhost:3333/{data.codigo}
-          </a>
-
-          <p className={styles.urlOriginal}>{data.urlOriginal}</p>
-        </>
-      )}
-
-      {editActive && (
-        <>
-          <form className={styles.form} onSubmit={(event) => handleEdit(event)}>
-            <input
-              id="legenda"
-              type="text"
-              placeholder="Legenda"
-              autoComplete="off"
-              value={editData.legenda || ""}
-              className={styles.input}
-              onChange={({ target }) =>
-                seteditData({ ...editData, legenda: target.value })
-              }
-            />
-
-            <input
-              id="url"
-              type="text"
-              placeholder="Link"
-              autoComplete="off"
-              value={editData.urlOriginal || ""}
-              className={styles.input}
-              onChange={({ target }) =>
-                seteditData({ ...editData, urlOriginal: target.value })
-              }
-            />
-
-            <button type="submit" className={styles.button}>
-              Editar
+          <div className={styles.botoes}>
+            <button onClick={handleCopy} className={styles.copiar}>
+              <Clipboard size={18} /> Copiar
             </button>
-          </form>
-        </>
-      )}
-
-      <div className={styles.rodape}>
-        <p className={styles.data}>
-          <Calendar size={16} /> criado em {dataFormatada} às {horaFormatada}
-        </p>
-        <div className={styles.botoes}>
-          <button onClick={handleCopy} className={styles.copiar}>
-            <Clipboard size={18} /> Copiar
-          </button>
-          <button onClick={() => setEditActive(!editActive)}>
-            <Pencil size={18} className={styles.pencil} />
-          </button>
-          <button onClick={handleDelete}>
-            <Trash size={18} className={styles.trash} />
-          </button>
+            <button onClick={() => setEditActive(!editActive)}>
+              <Pencil size={18} className={styles.pencil} />
+            </button>
+            <button onClick={handleDelete}>
+              <Trash size={18} className={styles.trash} />
+            </button>
+          </div>
         </div>
       </div>
     </div>

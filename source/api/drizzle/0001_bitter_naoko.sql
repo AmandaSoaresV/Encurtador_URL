@@ -1,0 +1,1 @@
+ALTER TABLE "link" ALTER COLUMN "data_criacao" SET DATA TYPE "undefined"."cal::local_datetime";

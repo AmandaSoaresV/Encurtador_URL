@@ -1,0 +1,1 @@
+ALTER TABLE "link" ALTER COLUMN "data_criacao" SET DATA TYPE timestamp;

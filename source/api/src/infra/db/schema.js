@@ -5,6 +5,7 @@ import {
   varchar,
   uuid,
   date,
+  timestamp,
 } from "drizzle-orm/pg-core";
 
 export const links = pgTable("link", {
@@ -13,5 +14,5 @@ export const links = pgTable("link", {
   urlOriginal: text("url_original"),
   codigo: varchar("codigo", { length: 16 }).unique(),
   cliques: integer("cliques"),
-  dataCriacao: date("data_criacao"),
+  dataCriacao: timestamp("data_criacao"),
 });

@@ -75,6 +75,16 @@ export default function Card({ data, onDelete }) {
     alert("Link copiado para a área de transferência!");
   }
 
+  const opcoes = { day: "numeric", month: "long" };
+  const dataFormatada = new Date(data.dataCriacao).toLocaleDateString(
+    "pt-BR",
+    opcoes
+  );
+  const horaFormatada = new Date(data.dataCriacao).toLocaleTimeString("pt-BR", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
   return (
     <div className={styles.card}>
       {!editActive && (
@@ -135,7 +145,7 @@ export default function Card({ data, onDelete }) {
 
       <div className={styles.rodape}>
         <p className={styles.data}>
-          <Calendar size={16} /> criado em {data.dataCriacao}, 09:06
+          <Calendar size={16} /> criado em {dataFormatada} às {horaFormatada}
         </p>
         <div className={styles.botoes}>
           <button onClick={handleCopy} className={styles.copiar}>

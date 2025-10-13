@@ -70,6 +70,11 @@ export default function Card({ data, onDelete }) {
     }
   }
 
+  function handleCopy() {
+    navigator.clipboard.writeText(`http://localhost:3333/${data.codigo}`);
+    alert("Link copiado para a área de transferência!");
+  }
+
   return (
     <div className={styles.card}>
       {!editActive && (
@@ -101,7 +106,7 @@ export default function Card({ data, onDelete }) {
               id="legenda"
               type="text"
               placeholder="Legenda"
-              autocomplete="off"
+              autoComplete="off"
               value={editData.legenda || ""}
               className={styles.input}
               onChange={({ target }) =>
@@ -113,7 +118,7 @@ export default function Card({ data, onDelete }) {
               id="url"
               type="text"
               placeholder="Link"
-              autocomplete="off"
+              autoComplete="off"
               value={editData.urlOriginal || ""}
               className={styles.input}
               onChange={({ target }) =>
@@ -133,7 +138,7 @@ export default function Card({ data, onDelete }) {
           <Calendar size={16} /> criado em {data.dataCriacao}, 09:06
         </p>
         <div className={styles.botoes}>
-          <button className={styles.copiar}>
+          <button onClick={handleCopy} className={styles.copiar}>
             <Clipboard size={18} /> Copiar
           </button>
           <button onClick={() => setEditActive(!editActive)}>

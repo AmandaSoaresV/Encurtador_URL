@@ -30,7 +30,7 @@ export default function Form() {
     }
 
     try {
-      await axios.post(`http://localhost:3333/links`, data);
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/links`, data);
       alert("Link encurtado com sucesso");
       window.location.reload();
     } catch (error) {

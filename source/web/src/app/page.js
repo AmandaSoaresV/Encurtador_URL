@@ -8,7 +8,9 @@ import { Link2 } from "lucide-react";
 export default async function Home() {
   async function getLinks() {
     try {
-      const response = await axios.get("http://localhost:3333/links");
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/links`
+      );
       return response.data;
     } catch (error) {
       console.error("Erro ao buscar links:", error);

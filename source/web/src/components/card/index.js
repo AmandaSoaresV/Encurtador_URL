@@ -33,7 +33,7 @@ export default function Card({ data, onDelete }) {
     );
     if (!confirmar) return;
     try {
-      await axios.delete(`http://localhost:3333/links/${data.id}`);
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/links/${data.id}`);
       alert("Link excluído com sucesso");
       window.location.reload();
     } catch (error) {
@@ -60,7 +60,10 @@ export default function Card({ data, onDelete }) {
     if (!confirmar) return;
 
     try {
-      await axios.put(`http://localhost:3333/links/${data.id}`, editData);
+      await axios.put(
+        `${process.env.NEXT_PUBLIC_API_URL}/links/${data.id}`,
+        editData
+      );
       alert("Link editado com sucesso");
       window.location.reload();
     } catch (error) {
@@ -72,7 +75,9 @@ export default function Card({ data, onDelete }) {
   }
 
   function handleCopy() {
-    navigator.clipboard.writeText(`http://localhost:3333/${data.codigo}`);
+    navigator.clipboard.writeText(
+      `${process.env.NEXT_PUBLIC_API_URL}/${data.codigo}`
+    );
     alert("Link copiado para a área de transferência!");
   }
 
@@ -88,7 +93,10 @@ export default function Card({ data, onDelete }) {
 
   return (
     <div className={styles.card}>
-      <QRCode value={`http://localhost:3333/${data.codigo}`} size={160} />
+      <QRCode
+        value={`${process.env.NEXT_PUBLIC_API_URL}/${data.codigo}`}
+        size={160}
+      />
       <div className={styles.content}>
         {!editActive && (
           <>
@@ -99,12 +107,12 @@ export default function Card({ data, onDelete }) {
               </span>
             </div>
             <a
-              href={`http://localhost:3333/${data.codigo}`}
+              href={`${process.env.NEXT_PUBLIC_API_URL}/${data.codigo}`}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.urlCurta}
             >
-              http://localhost:3333/{data.codigo}
+              {process.env.NEXT_PUBLIC_API_URL}/{data.codigo}
             </a>
             <p className={styles.urlOriginal}>{data.urlOriginal}</p>
           </>

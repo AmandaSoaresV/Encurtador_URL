@@ -1,7 +1,12 @@
 # Encurtador de Links
 
+# Encurtador de Links
+
 ## Descrição do Projeto
 
+## Descrição do Projeto
+
+O **Encurtador de Links** é uma aplicação web desenvolvida com o objetivo de transformar URLs longas em links curtos e fáceis de compartilhar. Este trabalho foi realizado para a disciplina de **Desenvolvimento Web 3**.
 O **Encurtador de Links** é uma aplicação web desenvolvida com o objetivo de transformar URLs longas em links curtos e fáceis de compartilhar. Este trabalho foi realizado para a disciplina de **Desenvolvimento Web 3**.
 
 O sistema foi desenvolvido possuindo duas partes principais:
@@ -13,10 +18,14 @@ O sistema foi desenvolvido possuindo duas partes principais:
 
 ## Aplicação funcionando
 
+## Aplicação funcionando
+
 - _Front-end:_ [Acesse aqui](https://links-web-dw.vercel.app)
 - _Back-end:_ [Acesse aqui](https://links-api-1.onrender.com)
 
 ---
+
+## Objetivo
 
 ## Objetivo
 
@@ -26,8 +35,14 @@ O objetivo do projeto é aplicar os conhecimentos adquiridos na disciplina de **
 
 # Tecnologias Utilizadas
 
+# Tecnologias Utilizadas
+
 ## Back-end
 
+| Tecnologia                                                                                                         | Descrição                                               |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
+| ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)         | Plataforma para execução do JavaScript no servidor.     |
+| ![Fastify](https://img.shields.io/badge/Fastify-000000?style=for-the-badge&logo=fastify&logoColor=white)           | Framework web rápido e eficiente para Node.js.          |
 | Tecnologia                                                                                                         | Descrição                                               |
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
 | ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)         | Plataforma para execução do JavaScript no servidor.     |
@@ -36,11 +51,24 @@ O objetivo do projeto é aplicar os conhecimentos adquiridos na disciplina de **
 | ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)  | Banco de dados relacional utilizado.                    |
 | ![dotenv](https://img.shields.io/badge/dotenv-8DD6F9?style=for-the-badge&logo=dotenv&logoColor=black)              | Gerenciamento de variáveis de ambiente.                 |
 | ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)  | Linguagem utilizada no desenvolvimento do back-end.     |
+| ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)  | Banco de dados relacional utilizado.                    |
+| ![dotenv](https://img.shields.io/badge/dotenv-8DD6F9?style=for-the-badge&logo=dotenv&logoColor=black)              | Gerenciamento de variáveis de ambiente.                 |
+| ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)  | Linguagem utilizada no desenvolvimento do back-end.     |
 
 ---
 
 ## Front-end
 
+## Front-end
+
+| Tecnologia                                                                                                           | Descrição                                           |
+| -------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)           | Framework React com renderização híbrida.           |
+| ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)                   | Biblioteca para construção da interface de usuário. |
+| ![CSS Modules](https://img.shields.io/badge/CSS%20Modules-264de4?style=for-the-badge&logo=css3&logoColor=white)      | Estilização modular, rápida e responsiva.           |
+| ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)                   | Comunicação entre o front-end e a API.              |
+| ![React QR Code](https://img.shields.io/badge/react--qr--code-61DAFB?style=for-the-badge&logo=react&logoColor=black) | Geração de códigos QR.                              |
+| ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)    | Linguagem principal utilizada no front-end.         |
 | Tecnologia                                                                                                           | Descrição                                           |
 | -------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
 | ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)           | Framework React com renderização híbrida.           |
@@ -70,6 +98,10 @@ Encurtador_URL/
 ```
 
 ## Como executar o projeto localmente
+
+## Como executar o projeto localmente
+
+### Clonar o repositório
 
 ### Clonar o repositório
 
@@ -105,6 +137,7 @@ npx drizzle-kit migrate
 ```
 
 ```bash
+npx drizzle-kit push
 npx drizzle-kit push
 ```
 
@@ -151,3 +184,5 @@ Essa melhoria foi implementada utilizando a **biblioteca react-qr-code**, permit
 | ---------------------- | -------------------------------------------------- |
 | Amanda Soares Vieira   | [@AmandaSoaresV](https://github.com/AmandaSoaresV) |
 | Matheus Teodoro Garcia | [@MatheusTG](https://github.com/MatheusTG)         |
+
+| Matheus Teodoro Garcia | [@MatheusTG](https://github.com/MatheusTG) |

@@ -13,8 +13,8 @@ O sistema foi desenvolvido possuindo duas partes principais:
 
 ##  Aplicação funcionando
 
-- *Front-end:* [Acesse aqui](https://linksam.vercel.app)
-- *Back-end:* [Acesse aqui](https://linksam-api.vercel.app)
+- *Front-end:* [Acesse aqui](https://links-web-dw.vercel.app)
+- *Back-end:* [Acesse aqui](https://links-api-1.onrender.com)
 
 ---
 
